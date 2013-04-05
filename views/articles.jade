@@ -2,15 +2,6 @@ extends layout
 
 block content
   #wrapper
-    #logo
-      img(src='/images/logo.png')
-    #display
-      include menubar
 
-      -for (var id in articles)
-        - var article = articles[id]
-        div
-          span
-            a(href='article/#{id}') #{article.title} - By #{article.author}
-
+    include createArticle
     include footer

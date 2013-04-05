@@ -1,0 +1,24 @@
+#createArticle
+  #display
+    include menubar
+    #blogpost
+      form(method='post')
+        | Enter your blog post here
+        div
+          span
+            label Title:
+              input(type='text', name='title')
+          span
+            label Author:
+              input(type='text', name='author')
+          span
+            label Content:
+              textarea(name='content')
+          span
+            input(type='submit', value='Create')
+
+    -for (var id in articles)
+      - var article = articles[id]
+      div
+        span
+          a(href='article/#{article._id}') #{article.title} - By #{article.author}

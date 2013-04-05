@@ -2,12 +2,11 @@ extends layout
 
 block content
   #wrapper
-    #logo
-      img(src='/images/logo.png')
     #display
       include menubar
 
-      p article
-
+      h2= article.title
+      h3 By #{article.author}
+      p= article.content
 
     include footer

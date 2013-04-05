@@ -41,19 +41,25 @@ exports.home_post_handler = function(req, res){
 
 exports.articles = function(req, res){
   Article.find({}, function(err, articles){
+    for (var i = 0; i < articles.length; i++){
+      console.log(articles[i]);
+    }
     res.render('articles', { title: "Articles", articles: articles });
   });
 };
 
 exports.article = function(req, res){
   console.log("params id:", req.params.id);
-  Article.findOne({id: req.params.id}, function(err, article){
+  Article.findById(req.params.id, function(err, article){
     if (err){
+      console.log("ERROR:", err);
       console.log("Cannot retrieve article with id:", req.params.id);
-      res.rend("Cannot retrieve article with id:", req.params.id);
+      res.send("Cannot retrieve article with id:", req.params.id);
     }
-    console.log(article);
-    if (!article) res.render('article', { title: "Article", article: article });
+    else{
+      console.log(article);
+      res.render('article', { title: "Article", article: article });
+    }
   });
   /*
   Article.findOne({id: req.params.id}, function(err, article){
