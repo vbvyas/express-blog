@@ -31,7 +31,7 @@ exports.home_post_handler = function(req, res){
   var article = new Article(req.body);
 
   article.save(function (err, article){
-    if (err) // TODO handle the error
+    if (err) { console.log("ERROR: ", err); }
     console.log('saved:', article);
   });
 
