@@ -61,9 +61,4 @@ exports.article = function(req, res){
       res.render('article', { title: "Article", article: article });
     }
   });
-  /*
-  Article.findOne({id: req.params.id}, function(err, article){
-    res.render('article', { title: "Article"+req.params.id, article: article });
-  });
-  */
 };
