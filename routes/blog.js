@@ -32,7 +32,7 @@ exports.home_post_handler = function(req, res){
 
   article.save(function (err, article){
     if (err) { console.log("ERROR: ", err); }
-    console.log('saved:', article);
+    else { console.log('saved:', article); }
   });
 
   // redirect to homepage
