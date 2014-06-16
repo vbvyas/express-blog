@@ -3,8 +3,7 @@ mongoose.connect('mongodb://localhost/express-blog');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'db connection error:'));
-db.once('open', function callback(){
-});
+db.once('open', function callback(){});
 
 var articleSchema = mongoose.Schema({
   title: {type: String, required: true, trim: true},
@@ -31,8 +30,11 @@ exports.home_post_handler = function(req, res){
   var article = new Article(req.body);
 
   article.save(function (err, article){
-    if (err) { console.log("ERROR: ", err); }
-    else { console.log('saved:', article); }
+    if (err) {
+      console.log("ERROR: ", err);
+    } else { 
+      console.log('saved:', article);
+    }
   });
 
   // redirect to homepage
@@ -55,8 +57,7 @@ exports.article = function(req, res){
       console.log("ERROR:", err);
       console.log("Cannot retrieve article with id:", req.params.id);
       res.send("Cannot retrieve article with id:", req.params.id);
-    }
-    else{
+    } else {
       console.log(article);
       res.render('article', { title: "Article", article: article });
     }
